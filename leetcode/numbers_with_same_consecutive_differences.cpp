@@ -3,29 +3,28 @@
 class Solution {
    public:
     vector<int> numsSameConsecDiff(int n, int k) {
-        std::unordered_set<int> set;
         vector<int> v;
         for (unsigned int i = 1; i <= 9; ++i) {
-            insertNum(set, std::to_string(i), i, n, k);
-        }
-        for (const auto e : set) {
-            v.push_back(e);
+            insertNum(v, std::to_string(i), i, n, k);
         }
         return v;
     }
 
-    void insertNum(std::unordered_set<int>& set, std::string str, int n, int len, int dif) {
+    void insertNum(std::vector<int>& vector, std::string str, int n, int len, int dif) {
         if (str.length() == len) {
-            set.insert(std::stoi(str));
+            vector.push_back(std::stoi(str));
             return;
         }
 
         int back = str.back() - '0';
         if (back - dif >= 0) {
-            insertNum(set, str + std::to_string(back - dif), n, len, dif);
+            insertNum(vector, str + std::to_string(back - dif), n, len, dif);
+            if (dif == 0) {
+                return;
+            }
         }
         if (back + dif < 10) {
-            insertNum(set, str + std::to_string(back + dif), n, len, dif);
+            insertNum(vector, str + std::to_string(back + dif), n, len, dif);
         }
     }
 };
