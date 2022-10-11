@@ -37,11 +37,14 @@ class Solution {
         return result;
     }
 
-    bool differ(std::string str1, std::string str2) {
-        int same = 0;
+    int differ(std::string str1, std::string str2) {
+        int different = 0;
         for (int i = 0; i < str1.size(); ++i) {
-            same += (str1[i] == str2[i]);
+            different += (str1[i] != str2[i]);
+            if (different > 1) {
+                return 0;
+            }
         }
-        return (same + 1 == str1.size());
+        return different != 0;
     }
 };
