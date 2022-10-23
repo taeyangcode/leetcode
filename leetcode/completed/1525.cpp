@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/number-of-good-ways-to-split-a-string/submissions/
+// https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
 
 /*
  * Solution using HashMap (unordered_map)
