@@ -10,15 +10,16 @@ impl Solution {
         if grid[0][0] == 1 || grid[length - 1][length - 1] == 1 {
             return -1;
         }
-        return match Self::find_shortest_path(&mut grid, &mut VecDeque::from([(0, 0)]), length, 0, 0, -1) {
+        grid[0][0] = -1;
+        return match Self::find_shortest_path(&mut grid, &mut VecDeque::from([(0, 0)]), length, 0, 0) {
             0 => -1,
-            result => -1 * result - 1,
+            result => -1 * result,
         };
     }
 
-    fn find_shortest_path(grid: &mut Vec<Vec<i32>>, queue: &mut VecDeque<(usize, usize)>, length: usize, row: usize, column: usize, count: i32) -> i32 {
-        println!("{row}, {column}: {count}");
-        grid[row][column] += count;
+    fn find_shortest_path(grid: &mut Vec<Vec<i32>>, queue: &mut VecDeque<(usize, usize)>, length: usize, row: usize, column: usize) -> i32 {
+        let count: i32 = grid[row][column];
+
         if (row, column) == (length - 1, length - 1) {
             return grid[row][column];
         }
@@ -37,56 +38,45 @@ impl Solution {
             return visit_value == 0 || (visit_value.abs() != 1 && count - 1 > visit_value);
         };
 
-        let mut added: usize = 0;
-        if can_move_north && can_visit(&grid, row - 1, column, count) {
-            grid[row - 1][column] = -1;
-            added += 1;
-            queue.push_back((row - 1, column));
-        }
         if can_move_north_east && can_visit(&grid, row - 1, column + 1, count) {
-            grid[row - 1][column + 1] = -1;
-            added += 1;
+            grid[row - 1][column + 1] += count - 1;
             queue.push_back((row - 1, column + 1));
         }
-        if can_move_east && can_visit(&grid, row, column + 1, count) {
-            grid[row][column + 1] = -1;
-            added += 1;
-            queue.push_back((row, column + 1));
-        }
         if can_move_south_east && can_visit(&grid, row + 1, column + 1, count) {
-            grid[row + 1][column + 1] = -1;
-            added += 1;
+            grid[row + 1][column + 1] += count - 1;
             queue.push_back((row + 1, column + 1));
         }
-        if can_move_south && can_visit(&grid, row + 1, column, count) {
-            grid[row + 1][column] = -1;
-            added += 1;
-            queue.push_back((row + 1, column));
-        }
         if can_move_south_west && can_visit(&grid, row + 1, column - 1, count) {
-            grid[row + 1][column - 1] = -1;
-            added += 1;
+            grid[row + 1][column - 1] += count - 1;
             queue.push_back((row + 1, column - 1));
         }
-        if can_move_west && can_visit(&grid, row, column - 1, count) {
-            grid[row][column - 1] = -1;
-            added += 1;
-            queue.push_back((row, column - 1));
-        }
         if can_move_north_west && can_visit(&grid, row - 1, column - 1, count) {
-            grid[row - 1][column - 1] = -1;
-            added += 1;
+            grid[row - 1][column - 1] += count - 1;
             queue.push_back((row - 1, column - 1));
+        }
+        if can_move_north && can_visit(&grid, row - 1, column, count) {
+            grid[row - 1][column] += count - 1;
+            queue.push_back((row - 1, column));
+        }
+        if can_move_east && can_visit(&grid, row, column + 1, count) {
+            grid[row][column + 1] += count - 1;
+            queue.push_back((row, column + 1));
+        }
+        if can_move_south && can_visit(&grid, row + 1, column, count) {
+            grid[row + 1][column] += count - 1;
+            queue.push_back((row + 1, column));
+        }
+        if can_move_west && can_visit(&grid, row, column - 1, count) {
+            grid[row][column - 1] += count - 1;
+            queue.push_back((row, column - 1));
         }
 
         queue.pop_front();
-        for index in 0..added {
-            return Self::find_shortest_path(grid, queue, length, queue[index].0, queue[index].1, count - 1);
-        }
         if queue.len() == 0 {
-            return -1;
+            return 1;
         }
-        return Self::find_shortest_path(grid, queue, length, queue[0].0, queue[0].1, count);
+        let (new_row, new_column): (usize, usize) = queue[0];
+        return Self::find_shortest_path(grid, queue, length, new_row, new_column);
     }
 }
 
