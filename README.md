@@ -1,7 +1,3 @@
-### leetcode
+### leetcode - daily
 
-My solutions for various coding question platforms.
-
-### License
-
-MIT License
+My solutions for LeetCode's daily challenges.
