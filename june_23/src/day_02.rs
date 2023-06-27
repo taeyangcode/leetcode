@@ -43,3 +43,4 @@ impl Solution {
     fn contains_circle(circle_one: Circle, circle_two: Circle) -> bool {
         return circle_one.2 as f64 >= (((circle_two.1 - circle_one.1) as f64).powf(2.0) + ((circle_two.0 - circle_one.0) as f64).powf(2.0)).sqrt();
    }
+}
