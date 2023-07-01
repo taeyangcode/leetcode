@@ -1,4 +1,2 @@
-# vscode config
-.vscode
-.vscode/
-**/.vscode/
+# cargo build
+**/target
