@@ -6,8 +6,6 @@ use std::collections::HashMap;
 
 impl Solution {
     pub fn maximum_requests(n: i32, requests: Vec<Vec<i32>>) -> i32 {
-        let mut result: i32 = 0;
-
         let mut cache: HashMap<i32, HashMap<i32, i32>> = HashMap::new();
         for request in &requests {
             *cache
@@ -17,23 +15,15 @@ impl Solution {
                 .or_insert(0) += 1;
         }
 
+        let mut result: i32 = 0;
+        for request in requests {
+            result += Self::transfer_request(&mut cache, request[0], request[1], request[0], -1);
+        }
         return result;
     }
 
-    fn transfer_request(cache: &mut HashMap<i32, HashMap<i32, i32>>, start_building: i32, current_building: i32) -> i32 {
-        if let Some(building) = cache.get_mut(&current_building) {
-            if let Some(target) = building.get_mut(&start_building) {
-                if target > &mut 0 {
-                    *target -= 1;
-                    return 1;
-                }
-            }
-            for target in building {
-                if target.1 > &mut 0 {
-                    Self::transfer_request(cache, start_building, current_building);
-                }
-            }
-        }
-        return 0;
+    fn transfer_request(cache: &mut HashMap<i32, HashMap<i32, i32>>, start_building: i32, target_building: i32, current_building: i32, previous_building: i32) -> i32 {
+
+        return -1;
     }
 }
