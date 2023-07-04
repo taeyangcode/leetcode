@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/buddy-strings/
-// https://leetcode.com/problems/buddy-strings/submissions/985924799/
+// https://leetcode.com/problems/buddy-strings/submissions/985925877/
 
 pub struct Solution;
 
