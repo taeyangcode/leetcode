@@ -1,2 +1,5 @@
 # cargo build
 **/target
+
+# os specific
+**/.DS_Store
