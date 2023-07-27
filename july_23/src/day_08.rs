@@ -1,7 +1,30 @@
 // https://leetcode.com/problems/put-marbles-in-bags/
+// https://leetcode.com/problems/put-marbles-in-bags/submissions/1005724232/
 
 pub struct Solution;
 
+impl Solution {
+    pub fn put_marbles(mut weights: Vec<i32>, k: i32) -> i64 {
+        let length: usize = weights.len();
+
+         weights = weights
+            .windows(2)
+            .map(|weight_element| weight_element[0] + weight_element[1])
+            .collect::<Vec<i32>>();
+         weights.sort();
+
+         let (mut min_sum, mut max_sum): (i64, i64) = (0, 0);
+         for index in 0..k as usize - 1 {
+            min_sum += weights[index] as i64;
+            max_sum += weights[length - 1 - index] as i64;
+         }
+         return max_sum - min_sum;
+    }
+}
+
+/*
+ * Initial Intuition Solution - FAIL
+ *
 use std::collections::VecDeque;
 
 impl Solution {
@@ -54,3 +77,4 @@ impl Solution {
         }
     }
 }
+*/
