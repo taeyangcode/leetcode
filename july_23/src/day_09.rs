@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/substring-with-largest-variance/
+// https://leetcode.com/problems/substring-with-largest-variance/submissions/1008722662/
 
 pub struct Solution;
 
@@ -37,7 +38,7 @@ impl Solution {
                             beta_offset = Offset::O;
                             beta_variance -= 1;
                             if beta_variance < 0 {
-                                beta_offset = Offset::None;
+                                beta_offset = Offset::Other;
                                 beta_variance = 0;
                             }
                         },
@@ -52,7 +53,7 @@ impl Solution {
                             alpha_offset = Offset::O;
                             alpha_variance -= 1;
                             if alpha_variance < 0 {
-                                alpha_offset = Offset::None;
+                                alpha_offset = Offset::Other;
                                 alpha_variance = 0;
                             }
                         },
@@ -68,6 +69,16 @@ impl Solution {
                                 _ => beta_offset = Offset::Other,
                             };
                         },
+                    };
+                    match alpha_offset {
+                        Offset::O => max_variance = std::cmp::max(max_variance, alpha_variance),
+                        Offset::Other => max_variance = std::cmp::max(max_variance, alpha_variance - 1),
+                        _ => {},
+                    };
+                    match beta_offset {
+                        Offset::O => max_variance = std::cmp::max(max_variance, beta_variance),
+                        Offset::Other => max_variance = std::cmp::max(max_variance, beta_variance - 1),
+                        _ => {},
                     };
                 }
             }
