@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
-// https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/submissions/987340024/
+// https://leetcode.com/submissions/detail/987340024/
 
 pub struct Solution;
 

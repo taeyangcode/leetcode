@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/minimum-size-subarray-sum/
-// https://leetcode.com/problems/minimum-size-subarray-sum/submissions/990536561/
+// https://leetcode.com/submissions/detail/990536561/
 
 pub struct Solution;
 

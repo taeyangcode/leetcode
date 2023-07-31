@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/maximize-the-confusion-of-an-exam/
-// https://leetcode.com/problems/maximize-the-confusion-of-an-exam/submissions/990574732/
+// https://leetcode.com/submissions/detail/990574732/
 
 pub struct Solution;
 

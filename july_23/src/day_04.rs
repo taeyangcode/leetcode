@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/single-number-ii/
-// https://leetcode.com/problems/single-number-ii/submissions/985945116/
+// https://leetcode.com/submissions/detail/985945116/
 
 pub struct Solution;
 

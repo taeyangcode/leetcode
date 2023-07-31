@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/put-marbles-in-bags/
-// https://leetcode.com/problems/put-marbles-in-bags/submissions/1005724232/
+// https://leetcode.com/submissions/detail/1005724232/
 
 pub struct Solution;
 

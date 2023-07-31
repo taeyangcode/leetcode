@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/substring-with-largest-variance/
-// https://leetcode.com/problems/substring-with-largest-variance/submissions/1008722662/
+// https://leetcode.com/submissions/detail/1008722662/
 
 pub struct Solution;
 

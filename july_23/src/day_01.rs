@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/fair-distribution-of-cookies/
-// https://leetcode.com/problems/fair-distribution-of-cookies/submissions/983453115/
+// https://leetcode.com/submissions/detail/983453115/
 
 pub struct Solution;
 
