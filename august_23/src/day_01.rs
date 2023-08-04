@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/combinations/
-// https://leetcode.com/submissions/detail/1012463317/
+// https://leetcode.com/submissions/detail/1012465880/
 
 struct Solution;
 
@@ -13,7 +13,7 @@ impl Solution {
         );
 
         fn make_combinations(combinations: &mut Vec<Vec<i32>>, index: usize, n: &usize, k: &usize, overflow: bool) -> () {
-            let mut current_combination: Vec<i32> = combinations.last().unwrap().clone();
+            let current_combination: &Vec<i32> = combinations.last().unwrap();
 
             let is_last_index: bool = index == *k - 1;
             let is_index_value_max: bool = match is_last_index {
@@ -28,6 +28,7 @@ impl Solution {
                 return;
             }
 
+            let mut current_combination: Vec<i32> = current_combination.clone();
             current_combination[index] += 1;
             match overflow {
                 true => {
