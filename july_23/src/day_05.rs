@@ -12,7 +12,7 @@ impl Solution {
                 0 => {
                     match zero_index {
                         -1 => zero_index = current_index,
-                        index => {
+                        _ => {
                             streak = current_index - zero_index - 1;
                             zero_index = current_index;
                         },
