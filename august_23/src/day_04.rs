@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/word-break/
 // https://leetcode.com/submissions/detail/1018182079/
 
-pub struct Solution;
+struct Solution;
 
 use std::collections::HashMap;
 
