@@ -17,7 +17,7 @@ impl Solution {
             .collect::<HashMap<&str, bool>>();
         dictionary.insert(&"", true);
 
-        fn is_segmentable<'a>(string: &'a str, dictionary: &mut HashMap<&'a str, bool>, word_length: usize, left_index: usize, right_index: usize) -> bool {
+        fn is_segmentable<'a>(string: &'a str, dictionary: &mut HashMap<&'a str, bool>, left_index: usize, right_index: usize) -> bool {
             for index in left_index + 1..right_index {
                 let left_string: &str = &string[left_index..index];
                 let right_string: &str = &string[index..right_index];
@@ -28,22 +28,22 @@ impl Solution {
                     (Some(true), Some(true)) => return true,
                     (Some(_), Some(_)) => {},
                     (Some(left_segmentable), None) => {
-                        let right_segmentable: bool = is_segmentable(string, dictionary, word_length, index, right_index);
+                        let right_segmentable: bool = is_segmentable(string, dictionary, index, right_index);
                         dictionary.insert(right_string, right_segmentable);
                         if left_segmentable && right_segmentable {
                             return true;
                         }
                     },
                     (None, Some(right_segmentable)) => {
-                        let left_segmentable: bool = is_segmentable(string, dictionary, word_length, left_index, index);
+                        let left_segmentable: bool = is_segmentable(string, dictionary, left_index, index);
                         dictionary.insert(left_string, left_segmentable);
                         if left_segmentable && right_segmentable {
                             return true;
                         }
                     },
                     (None, None) => {
-                        let left_segmentable: bool = is_segmentable(string, dictionary, word_length, left_index, index);
-                        let right_segmentable: bool = is_segmentable(string, dictionary, word_length, index, right_index);
+                        let left_segmentable: bool = is_segmentable(string, dictionary, left_index, index);
+                        let right_segmentable: bool = is_segmentable(string, dictionary, index, right_index);
 
                         dictionary.insert(left_string, left_segmentable);
                         dictionary.insert(right_string, right_segmentable);
@@ -58,6 +58,6 @@ impl Solution {
             return false;
         }
 
-        return is_segmentable(&s, &mut dictionary, s.len(), 0, s.len());
+        return is_segmentable(&s, &mut dictionary, 0, s.len());
     }
 }
