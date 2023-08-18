@@ -21,19 +21,42 @@ impl TreeNode {
     }
 }
 
-use std::rc::{Rc, Weak};
+use std::collections::HashMap;
+use std::rc::Rc;
 use std::cell::RefCell;
+
+type Node = Rc<RefCell<TreeNode>>;
 
 impl Solution {
     pub fn generate_trees(n: i32) -> Vec<Option<Rc<RefCell<TreeNode>>>> {
-        type ResultType = Vec<Option<Rc<RefCell<TreeNode>>>>;
-        type Node = RefCell<TreeNode>;
+        let mut cache: HashMap<(i32, i32), Option<Vec<Node>>> = HashMap::new();
+        let values: Vec<i32> = (1..=n).collect::<Vec<i32>>();
 
-        let mut result: ResultType = vec![];
 
-        fn generate_tree(trees: &mut ResultType, head_node: Weak<Node>, current_node: Weak<Node>, count: i32) {
+        fn generate(cache: &mut HashMap<(i32, i32), Option<Vec<Node>>>, values: &Vec<i32>, pivot: usize, left_index: usize, right_index: usize) {
+            let tree_node = |value: i32| Rc::new(RefCell::new(TreeNode::new(value)));
+
+            let left_tree: Option<Vec<Node>> = match cache.get(&(left_index as i32, pivot as i32)) {
+                Option::Some(left_tree) => left_tree.clone(),
+                Option::None => {
+                    let left_values: &[i32] = &values[left_index..pivot as usize];
+
+                    match left_values.len() {
+                        0 => { cache.insert((left_index as i32, pivot as i32), Option::None); },
+                        1 => { cache.insert((left_index as i32, pivot as i32), Option::Some(vec![tree_node(left_values[0])])); },
+                        _ => {
+                            for left_value in left_values {
+
+                            }
+                        },
+                    };
+                    cache.get(&(left_index as i32, pivot as i32)).unwrap().clone()
+                },
+            };
+
+            let right_values: &[i32] = &values[pivot as usize..right_index];
         }
 
-        return result;
+        todo!();
     }
 }
