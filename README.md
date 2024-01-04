@@ -1,3 +1,7 @@
-## leetcode
+# leetcode
 
-Collection of my solutions for mainly LeetCode's daily problems as well as other random problems found in the [random branch](https://github.com/taeyangcode/leetcode/tree/random/).
+Collection of my solutions for mainly LeetCode coding problems.
+
+## Generating Cargo Project
+
+All projects within `leetcode/` are derived from my [LeetCode template project](https://github.com/taeyangcode/leetcode-template). Instructions to generate a project can be found at the aforementioned repository.
