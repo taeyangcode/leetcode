@@ -1,5 +1,5 @@
-// https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/description/?envType=daily-question&envId=2024-01-04
-// https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/submissions/1136332036/?envType=daily-question&envId=2024-01-04
+// question: https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/description/?envType=daily-question&envId=2024-01-04
+// solution: https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/submissions/1136332036/?envType=daily-question&envId=2024-01-04
 
 pub struct Solution;
 

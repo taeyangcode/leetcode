@@ -1,4 +1,4 @@
-use december_24::day_04::Solution;
+use january_24::day_04::Solution;
 
 #[test]
 fn cases() {
